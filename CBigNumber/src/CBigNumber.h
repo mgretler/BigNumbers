@@ -12,13 +12,14 @@
 
 class CBigNumber {
 private:
-	const int NUMBER_OF_DIGITS = 4000;
+	const static unsigned NUMBER_OF_DIGITS = 4000;
 //	bool m_positiveNumber;
 //	unsigned m_validDigits;
 	unsigned m_number[NUMBER_OF_DIGITS];
-	unsigned clear();
+	unsigned m_length;
+	void clear();
 public:
-	CBigNumber(int initialValue = 0);
+	CBigNumber(unsigned int initialValue = 0);
 	virtual ~CBigNumber();
 
 	CBigNumber operator+(const CBigNumber& addend); // only positive numbers supported
