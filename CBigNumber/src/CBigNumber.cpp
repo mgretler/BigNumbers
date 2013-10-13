@@ -51,21 +51,21 @@ CBigNumber CBigNumber::operator *(unsigned int mult) {
 	unsigned int i;
 
 	while (mult) {
-		factor = mult % 10;  // einstelliger Multiplikand
+		factor = mult % 10;  // einstelliger Multiplikand machen
 		carry = 0;
-		unsigned int _max = max(this->m_length+shift, res.m_length);
-		for (i = 0; i < _max; i++) {
+		CBigNumber res1;
+		for (i = 0; i < this->m_length; i++) {
 			// TODO
 			// Funktioniert nur solange die CBigNumber länger als mult ist
-			temp = this->m_number[i] * factor + res.m_number[i + shift] + carry;
-			res.m_number[i + shift] = temp % 10;
-//			if ((i + shift) > res.m_length)
-//				res.m_length = i + shift;
+//			temp = this->m_number[i] * factor + res.m_number[i + shift] + carry;
+			temp = this->m_number[i] * factor + carry;
+			res1.m_number[i + shift] = temp % 10;
+			res1.m_length = i + shift+1;
 			carry = temp / 10;
 		}
-		res.m_length = this->m_length + shift;
 		if (carry)
-			res.m_number[res.m_length++] = carry;
+			res1.m_number[res1.m_length++] = carry;
+		res = res + res1;
 		shift++;
 		mult /= 10;
 	}
