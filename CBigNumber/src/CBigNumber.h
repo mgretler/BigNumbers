@@ -12,7 +12,7 @@
 
 class CBigNumber {
 private:
-	const static unsigned NUMBER_OF_DIGITS = 4000;
+	const static unsigned NUMBER_OF_DIGITS = 6000;
 //	bool m_positiveNumber;
 //	unsigned m_validDigits;
 	unsigned m_number[NUMBER_OF_DIGITS];
@@ -23,7 +23,8 @@ public:
 	virtual ~CBigNumber();
 
 	CBigNumber operator+(const CBigNumber& addend); // only positive numbers supported
-	CBigNumber operator*(const CBigNumber&factor);
+	CBigNumber operator*(const CBigNumber& factor);
+	CBigNumber operator*(unsigned int factor);
 
 	friend std::ostream& operator<<(std::ostream& o, const CBigNumber&);
 };
