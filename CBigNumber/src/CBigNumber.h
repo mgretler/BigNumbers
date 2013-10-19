@@ -23,7 +23,7 @@ public:
 	virtual ~CBigNumber();
 
 	CBigNumber operator+(const CBigNumber& addend); // only positive numbers supported
-	CBigNumber operator*(const CBigNumber& factor);
+//	CBigNumber operator*(const CBigNumber& factor);
 	CBigNumber operator*(unsigned int factor);
 
 	friend std::ostream& operator<<(std::ostream& o, const CBigNumber&);

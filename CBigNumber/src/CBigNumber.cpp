@@ -33,14 +33,11 @@ CBigNumber CBigNumber::operator +(const CBigNumber& addend) {
 		carry = temp / 10;
 		res.m_length = i + 1;
 	}
+	// den letzten Übertrag noch schreiben
 	if (carry)
 		res.m_number[res.m_length++] = carry;
-
 	return res;
 }
-
-//CBigNumber CBigNumber::operator *(const CBigNumber& factor) {
-//}CBigNumber CBigNumber::operator *(const unsigned int factor) {
 
 CBigNumber CBigNumber::operator *(unsigned int mult) {
 	CBigNumber res;
@@ -51,30 +48,29 @@ CBigNumber CBigNumber::operator *(unsigned int mult) {
 	unsigned int i;
 
 	while (mult) {
-		factor = mult % 10;  // einstelliger Multiplikand machen
+		factor = mult % 10;		// einstelliger Multiplikand machen
 		carry = 0;
-		CBigNumber res1;
+		CBigNumber res1;		// Zwischenresultat
 		for (i = 0; i < this->m_length; i++) {
-			// TODO
-			// Funktioniert nur solange die CBigNumber länger als mult ist
-//			temp = this->m_number[i] * factor + res.m_number[i + shift] + carry;
+//			temp = this->m_number[i] * factor + res.m_number[i + shift] + carry; 		// Alles aufs mal
 			temp = this->m_number[i] * factor + carry;
 			res1.m_number[i + shift] = temp % 10;
-			res1.m_length = i + shift+1;
+			res1.m_length = i + shift + 1;
 			carry = temp / 10;
 		}
+		// den letzten Übertrag noch schreiben
 		if (carry)
 			res1.m_number[res1.m_length++] = carry;
 		res = res + res1;
 		shift++;
 		mult /= 10;
 	}
-
 	return res;
 }
 
 ostream& operator<<(ostream& o, const CBigNumber& n) {
-	for (unsigned i = n.m_length; i > 0; i--) {
+	// m_length zeigt auf den nächsten freien Platz im Array und kann nicht gedruckt werden
+	for (unsigned int i = n.m_length; i > 0; i--) {
 		o << n.m_number[i - 1];
 	}
 	return o;

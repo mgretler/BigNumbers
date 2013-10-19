@@ -26,12 +26,13 @@ int main(int argc, char **argv) {
 //	cout << "Resultat   =" << res << endl;
 //
 	CBigNumber res1(1);
-	start = clock();
-	for (unsigned int i = 2; i < 1001; i+=3) {
-		res1 = res1 * (i*(i+1)*(i+2));
+	start = clock();			// Stoppuhr starten
+	// Fakultät von 1000 berechnen
+	for (unsigned int i = 2; i < 1001; i += 3) {
+		res1 = res1 * (i * (i + 1) * (i + 2));
 //		cout << "Iteration " << i << ": " << res1 <<endl;
 	}
-	ende = clock();
+	ende = clock();				// Stoppuhr anhalten
 
 	cout << "Resultat   =" << res1 << endl;
 
