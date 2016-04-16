@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-	clock_t start, ende;
+	clock_t start, ende, dauer;
 	start = clock();
 	CBigNumber bn1(54321);
 	cout << "CBigNumber =" << bn1 << endl;
@@ -35,8 +35,9 @@ int main(int argc, char **argv) {
 	ende = clock();				// Stoppuhr anhalten
 
 	cout << "Resultat   =" << res1 << endl;
+	dauer = ende - start;
 
-	cout << "Duration:" << (ende - start) << " ms" << endl; // oder xx / CLOCKS_PER_SEC
+	cout << "Duration:" << ((double)dauer)/CLOCKS_PER_SEC*1000 << " ms" << endl; // oder xx / CLOCKS_PER_SEC
 	cout << start << endl;
 	return 0;
 }
